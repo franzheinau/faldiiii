@@ -1,24 +1,38 @@
 "use client";
 
-import { projects } from "../app/data/projects";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import projects from "@/app/data/projects";
+import ProjectCard from "./ProjectCard";
+
+const categories = ["all", "web", "ui"];
 
 export default function Projects() {
-  return (
-    <section id="projects" className="projects">
-      <h2>Projects</h2>
+  const [active, setActive] = useState("all");
 
-      <div className="project-grid">
-        {projects.map((p, i) => (
-          <motion.a
-            key={i}
-            href={p.link}
-            className="project-card"
-            whileHover={{ y: -8 }}
+  const filteredProjects =
+    active === "all"
+      ? projects
+      : projects.filter((p) => p.category === active);
+
+  return (
+    <section id="projects">
+      {/* FILTER */}
+      <div className="project-filter">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={active === cat ? "active" : ""}
+            onClick={() => setActive(cat)}
           >
-            <h3>{p.title}</h3>
-            <p>{p.desc}</p>
-          </motion.a>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* GRID */}
+      <div className="project-grid">
+        {filteredProjects.map((p) => (
+          <ProjectCard key={p.slug} {...p} />
         ))}
       </div>
     </section>

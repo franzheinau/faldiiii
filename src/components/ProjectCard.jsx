@@ -1,15 +1,16 @@
-import { motion } from "framer-motion";
+import Link from "next/link";
 
-export default function ProjectCard({ title, desc, link }) {
+export default function ProjectCard({ title, desc, slug }) {
   return (
-    <motion.a
-      href={link}
-      target="_blank"
-      whileHover={{ scale: 1.05 }}
-      className="card"
-    >
-      <h3>{title}</h3>
-      <p>{desc}</p>
-    </motion.a>
+    <article className="project-card">
+      <div className="project-card-content">
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </div>
+
+      <Link href={`/projects/${slug}`} className="project-link">
+        View details →
+      </Link>
+    </article>
   );
 }

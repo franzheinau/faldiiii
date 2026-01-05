@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image"; // ✅ WAJIB
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,17 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="nav-inner">
-        <div className="logo">▲</div>
+        <div className="logo">
+          <Link href="/">
+            <Image
+              src="/logo.png"   // ⬅️ PERHATIKAN INI
+              alt="Logo"
+              width={100}
+              height={50}
+              priority
+            />
+          </Link>
+        </div>
 
         <nav className={`menu ${open ? "open" : ""}`}>
           <Link href="/" onClick={() => setOpen(false)}>Home</Link>

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      © {new Date().getFullYear()} My Portfolio
+      © {new Date().getFullYear()} Rifaldi
     </footer>
   );
 }
