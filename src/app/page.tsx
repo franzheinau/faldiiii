@@ -1,12 +1,11 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
-    <div className="main-heading">
-  <h1> hallo dunia</h1>
-  <p className="subtitle">Selamat datang di halaman utama saya!</p >
-    </div>
-
-  
+    <>
+      <Hero />
+      <Projects />
+    </>
   );
 }

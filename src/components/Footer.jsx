@@ -1,13 +1,7 @@
-
-
-function Footer() {
+export default function Footer() {
   return (
     <footer className="footer">
-        <p>&copy; 2024 My Website. All rights reserved.</p>
+      © {new Date().getFullYear()} My Portfolio
     </footer>
-
-  
-  )
+  );
 }
-
-export default Footer
